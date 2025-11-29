@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday ❤</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffeef8 0%, #fff5f7 100%);
+            min-height: 100vh;
+        }
+
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.active {
+            display: flex;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-box {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 182, 193, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ff1493;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #ff69b4;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .illustration {
+            font-size: 5rem;
+            margin: 30px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Confetti & Flower Animations */
+        .confetti, .flower {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .flower {
+            font-size: 25px;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            background: #ffd700;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Section 3 specific styling */
+        #section3 {
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ffb6d9 100%);
+        }
+
+        #section3 .content-box {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.6rem; }
+            .subtitle { font-size: 1.1rem; }
+            p { font-size: 1rem; }
+            .content-box { padding: 35px 25px; }
+            .illustration { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- SECTION 1: Main Page -->
+    <div id="section1" class="section active">
+        <div class="content-box">
+            <h1>Happy Birthday!</h1>
+            <div class="subtitle">Hari ini spesial banget, karena hari ini kamu lahir ke dunia.</div>
+            <div class="illustration">🎂🎈</div>
+            <p>Aku cuma mau bilang makasih sudah hadir dalam hidup aku. Semoga semua doa kamu pelan-pelan jadi kenyataan.</p>
+            <button id="giftBtn" class="btn">Buka Pesan Spesial 🎁</button>
+        </div>
+    </div>
+
+    <!-- SECTION 2: For You -->
+    <div id="section2" class="section">
+        <div class="content-box">
+            <h1>FOR YOU ❤</h1>
+            <div class="subtitle">Ada sesuatu yang ingin aku kasih ke kamu…</div>
+            <div class="illustration">💝</div>
+            <p>Semoga kamu panjang umur, sehat, dan selalu dalam hal-hal baik. Terima kasih sudah jadi orang yang berarti buat aku.</p>
+            <button id="flowerBtn" class="btn">Buka Hadiah Bunga 🌸</button>
+        </div>
+    </div>
+
+    <!-- SECTION 3: Flower Falling Page -->
+    <div id="section3" class="section">
+        <div class="content-box">
+            <h1>Happy Birthday Once Again ❤</h1>
+            <div class="illustration">🌸💐🌺</div>
+            <p>Aku berharap semua kebahagiaan selalu menghampiri kamu. Aku bersyukur bisa kenal kamu.</p>
+        </div>
+    </div>
+
+    <script>
+        // Section Management
+        function showSection(sectionNum) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('section' + sectionNum).classList.add('active');
+            
+            // Start permanent flower loop for section 3
+            if (sectionNum === 3) {
+                startPermanentFlowers();
+            }
+        }
+
+        // Confetti Animation
+        function startConfetti() {
+            const colors = ['#ffd700', '#ff69b4', '#ff1493', '#ffc0cb', '#ffb6c1'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.height = confetti.style.width;
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+
+        // Single Flower Animation (for button click)
+        function startFlowerAnimation() {
+            const flowers = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐'];
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower';
+                    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                    flower.style.left = Math.random() * 100 + '%';
+                    flower.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    document.body.appendChild(flower);
+                    setTimeout(() => flower.remove(), 6000);
+                }, i * 50);
+            }
+        }
+
+        // Permanent Flower Loop for Section 3
+        let flowerInterval;
+        function startPermanentFlowers() {
+            const flowers = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐'];
+            
+            // Clear any existing interval
+            if (flowerInterval) clearInterval(flowerInterval);
+            
+            // Create flowers continuously
+            flowerInterval = setInterval(() => {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                document.body.appendChild(flower);
+                setTimeout(() => flower.remove(), 8000);
+            }, 300);
+        }
+
+        // Button Event Listeners
+        document.getElementById('giftBtn').onclick = () => {
+            startConfetti();
+            setTimeout(() => {
+                showSection(2);
+            }, 2000);
+        };
+
+        document.getElementById('flowerBtn').onclick = () => {
+            startFlowerAnimation();
+            setTimeout(() => {
+                showSection(3);
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
